@@ -5,11 +5,13 @@ public class FallingPlatform : MonoBehaviour {
     private Rigidbody PlatFormRigibody;
 
 	// Use this for initialization
+    public float FallDelay = 5;
 
 
     void OnCollisionEnter (Collision col)
     {
          StartCoroutine(PlatformDrop());
+        
     }
        
         
@@ -29,7 +31,7 @@ public class FallingPlatform : MonoBehaviour {
 
     IEnumerator PlatformDrop()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(FallDelay);
         PlatFormRigibody.isKinematic = false;
         PlatFormRigibody.useGravity = true;
         Debug.Log("PlatFormDrop");
